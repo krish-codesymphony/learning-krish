@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>Registration</title>
+    </head>
+    <body>
+        <table border="2" cellpadding="6" cellspacing="4">
+            <form action="#">
+                <th colspan="3">Register</th>
+                <tr>
+                    <td>Name:</td>
+                    <td colspan="2">
+                        <input type="text" placeholder="Enter Fullname">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="chk">Role:</label></td>
+                    <td>
+                        <input type="checkbox" name="chk" id="chkUser" checked> User
+                    </td>
+                    <td>
+                        <input type="checkbox" name="chk" id="chkAdmin"> Admin
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td colspan="2">
+                        <input type="email" name="email" id="email"
+                            placeholder="Enter E-Mail">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td colspan="2">
+                        <input type="password" name="password" id="password"
+                            placeholder="Enter Password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="rdb" id="rdbmale"> Male
+                    </td>
+                    <td>
+                        <input type="radio" name="rdb" id="rdbfemale"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set Number:</td>
+                    <td colspan="2"><input type="number" name="num" id="num"
+                            placeholder="Enter / Set Number">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Date:</td>
+                    <td colspan="2"><input type="date" name="dt" id="dt"></td>
+                </tr>
+                <tr>
+                    <td>Set Time:</td>
+                    <td colspan="2"><input type="time" name="tm" id="tm"></td>
+                </tr>
+                <tr>
+                    <td>Date & Time:</td>
+                    <td colspan="2"><input type="datetime-local" name="dtt"
+                            id="dtt"></td>
+
+                </tr>
+                <tr>
+                    <td>Month:</td>
+                    <td colspan="2"><input type="month" name="month"
+                            id="month"></td>
+                </tr>
+                <tr>
+                    <td>Week:</td>
+                    <td colspan="2"><input type="week" name="week"
+                            id="week"></td>
+                </tr>
+                <tr>
+                    <td>Pick a Color:</td>
+                    <td colspan="2"><input type="color" name="clr"></td>
+                </tr>
+                <tr>
+                    <td>Telephone:</td>
+                    <td colspan="2"><input type="tel" name="phone"
+                            id="phone"></td>
+                </tr>
+                <tr>
+                    <td>File:</td>
+                    <td colspan="2"><input type="file" name="file"
+                            id="file"></td>
+                </tr>
+                <tr>
+                    <td>Set Range:</td>
+                    <td colspan="2"><input type="range" name="rng" id="rng"
+                            value="80"></td>
+                </tr>
+                <tr>
+                    <td>URL:</td>
+                    <td colspan="2"><input type="url" name="url" id="url"></td>
+                </tr>
+
+                <tr>
+                    <td>Select Items:</td>
+                    <td colspan="2"><select name="opts" id="opts">
+                            <option value="0" >Select items</option>
+                            <option value="1">Item 1</option>
+                            <option value="2" selected>Items 2</option>
+                            <option value="3">Items 3</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description:</td>
+                    <td colspan="2">
+                        <textarea name="txtDesc" id="txtDesc" cols="24" rows="8"
+                            placeholder="Describe Here..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="reset" value="RESET">
+                    </td>
+                    <td>
+                        <input type="button" value="Submit">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</html>
