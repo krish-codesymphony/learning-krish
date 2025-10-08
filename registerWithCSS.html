@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Registration</title>
+        <link rel="stylesheet" href="register.css">
+    </head>
+    <body>
+        <form action="#">
+            <h2>Register</h2>
+
+            <div class="field"><label for="fullName">Name:</label>
+                <input type="text" class="box" name="fullName" id="fullName"
+                    placeholder="Enter Fullname"></div>
+
+            <div class="field"><label for="email">E-mail:</label>
+                <input type="email" class="box" name="email" id="email"
+                    placeholder="Enter E-Mail">
+            </div>
+
+            <div class="field"><label for="password">Password:</label>
+                <input type="password" class="box" name="password" id="password"
+                    placeholder="Enter Password">
+            </div>
+
+            <div class="field"><label for="chk">Role:</label>
+                <div><input type="checkbox" name="chk" id="chkUser" checked
+                        value="User">
+                    <label for="chkUser">User</label>
+
+                    <input type="checkbox" name="chk" id="chkAdmin">
+                    <label for="chkAdmin">Admin</label>
+                </div>
+            </div>
+
+            <div class="field"><label for="rdb">Gender:</label>
+                <div>
+                    <input type="radio" name="rdb" id="rdbmale">
+                    <label for="rdbmale">Male</label>
+
+                    <input type="radio" name="rdb" id="rdbfemale">
+                    <label for="rdbfemale">Female</label>
+                </div>
+            </div>
+
+            <div class="field"><label for="num">Set Number:</label>
+                <input type="number" class="box" name="num" id="num"
+                    placeholder="Enter / Set Number">
+            </div>
+            <div class="field"><label for="dt">Date:</label>
+                <input type="date" class="box" name="dt"
+                    id="dt">
+            </div>
+            <div class="field"><label for="tm">Set
+                    Time:</label>
+                <input type="time" class="box" name="tm"
+                    id="tm">
+            </div>
+            <div class="field"><label for="dtt">Date &
+                    Time:</label>
+                <input type="datetime-local" class="box"
+                    name="dtt" id="dtt">
+            </div>
+            <div class="field"><label
+                    for="month">Month:</label>
+                <input type="month" class="box"
+                    name="month" id="month">
+            </div>
+            <div class="field"><label
+                    for="week">Week:</label>
+                <input type="week" class="box"
+                    name="week" id="week">
+            </div>
+            <div class="field"><label
+                    for="clr">Pick a
+                    Color:</label>
+                <input type="color"
+                    name="clr" id="clr">
+            </div>
+            <div class="field"><label
+                    for="phone">Telephone:</label>
+                <input type="tel"
+                    class="box"
+                    name="phone"
+                    id="phone">
+            </div>
+            <div
+                class="field"><label
+                    for="file">File:</label>
+                <input type="file"
+                    name="file"
+                    id="file"
+                    accept=".xls, .xlsx, .csv">
+            </div>
+            <div
+                class="field"><label
+                    for="rng">Set
+                    Range:</label>
+                <input
+                    type="range"
+                    name="rng"
+                    id="rng"
+                    value="80">
+            </div>
+            <div
+                class="field"><label
+                    for="url">URL:</label>
+                <input
+                    type="url"
+                    class="box"
+                    name="url"
+                    id="url">
+            </div>
+            <div
+                class="field"><label
+                    for="opts">Select
+                    Items:</label>
+                <select
+                    class="box"
+                    name="opts"
+                    id="opts">
+                    <option
+                        value="0">Select
+                        items</option>
+                    <option
+                        value="1">Item
+                        1</option>
+                    <option
+                        value="2"
+                        selected>Items
+                        2</option>
+                    <option
+                        value="3">Items
+                        3</option>
+                </select>
+            </div>
+            <div
+                class="field"><label
+                    for="txtDesc">Description:</label>
+                <textarea
+                    name="txtDesc"
+                    class="box"
+                    id="txtDesc"
+                    placeholder="Describe Here..."></textarea>
+            </div>
+            <div class="btns">
+                <input
+                    type="reset"
+                    class="btn box"
+                    id="reset"
+                    value="RESET">
+                <div id="#space"></div>
+                <input
+                    type="button"
+                    class="btn box"
+                    id="submit"
+                    value="SUBMIT">
+            </div>
+        </form>
+    </body>
+</html>

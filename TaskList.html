@@ -1,19 +1,39 @@
 <html>
     <head>
-        <title>Main File</title>
+        <title>Tasks File</title>
     </head>
+    <style>
+        *{
+            font-size: 22px;
+        }
+        
+        p{
+            font-size: 26px;
+            font-weight: 600;
+        }
+        p.heads{
+            font-size: 28px;
+        }
+    </style>
     <body>
-        <h3>Task List:-</h3>
-        <dl>
-            <dt><b>Basic/Random Tags</b></dt>
-            <dd>Random tags usage to know html better, <a
-                    href="krish.html">Check</a> it out</dd>
-            <dt><b>Table Tag Use Case</b></dt>
-            <dd>Table of Projects details in brief, <a
-                    href="task1.html">take a look</a>!</dd>
-            <dt><b>Register Now!!!</b></dt>
-            <dd><a href="registerWithTable.html">Checkout</a> a
-                Registration Form fill it up to know more.</dd>
-        </dl>
+        <p class="heads">Tasks List:-</p>
+        <div class="parent">
+
+            <p><u>HTML Tasks</u></p>
+            <ol type="A">
+                <!-- <dt><b>Basic/Random Tags</b></dt> -->
+                <li><a href="krish.html">Basic Tags</a></li>
+                <!-- <dt><b>Table Tag Use Case</b></dt> -->
+                <li><a href="task1-1.html">Tables and Lists</a></li>
+                <!-- <dt><b>Register Now!!!</b></dt> -->
+                <li><a href="registerWithTable.html">Form with Tables</a></li>
+            </ol>
+
+            <p><u>CSS Tasks</u></p>
+            <ol>
+                <li><a href="registerWithCSS.html">Form with CSS Grid</a></li>
+                <li>Form with CSS Flex</li>
+            </ol>
+        </div>
     </body>
 </html>
