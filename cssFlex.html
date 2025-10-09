@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Flex Demo</title>
+        <style>
+            div{
+                margin: 2px;
+                padding: 2px;
+                border: 3px solid black;
+                font-size: 20px;
+            }
+            .main{
+                border: none;
+                display: flex;
+                flex-flow: wrap;
+            }
+            .gp{
+                border: none;
+            }
+            .parent{
+                margin: 20px;
+                width: 650px;
+                /* height: 120px; */
+                display: flex;  
+                height: auto;
+            }
+            .child{
+                height: 60px;
+                width: 80px;
+            }
+            .parent.jc{
+                justify-content: space-around;
+            }
+            .parent.fd{
+                flex-direction: row-reverse;
+            }
+            .parent.fw{
+                flex-wrap: wrap;
+            }
+            .parent.as{
+                height: 150px;
+            }
+            .parent.ai{
+                height: 200px;
+                align-items: center;
+            }
+            .heading{
+                font-size: 22px;
+                margin: auto;
+            }
+            .one{
+                border-color: green;
+                /* flex-grow: 1; */
+                
+            }
+            .two{
+                border-color: red;
+            }
+            .three{
+                border-color: darkslategray;
+                
+            }
+            .four{
+                border-color: aqua;
+            }
+            .five{
+                border-color: brown;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="gp">
+                <span class="heading">display: flex;</span>
+                <div class="parent">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="gp">
+                <span class="heading">justify-content: space-around;</span>
+                <div class="parent jc">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="gp">
+                <span class="heading">flex-direction: row-reverse;</span>
+                <div class="parent fd">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="gp">
+                <span class="heading">flex-wrap: wrap;</span>
+                <div class="parent fw">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                    <div class="child six"><span>Child 6</span></div>
+                    <div class="child seven"><span>Child 7</span></div>
+                    <div class="child eight"><span>Child 8</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="gp">
+                <span class="heading">child property - align-self: end;</span>
+                <div class="parent as">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"
+                        style="align-self: flex-end;"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                    <div class="child six"><span>Child 6</span></div>
+                    <div class="child seven"><span>Child 7</span></div>
+                    <div class="child eight"><span>Child 8</span></div>
+                </div>
+                <hr>
+            </div>
+            <div class="gp">
+                <span class="heading">align-items: center;</span>
+                <div class="parent ai">
+                    <div class="child one"><span>Child 1</span></div>
+                    <div class="child two"><span>Child 2</span></div>
+                    <div class="child three"><span>Child 3</span></div>
+                    <div class="child four"><span>Child 4</span></div>
+                    <div class="child five"><span>Child 5</span></div>
+                    <div class="child six"><span>Child 6</span></div>
+                    <div class="child seven"><span>Child 7</span></div>
+                    <div class="child eight"><span>Child 8</span></div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </body>
+</html>
