@@ -4,8 +4,8 @@
 }
 
 .frmMain {
-  margin: auto;
-  width: 36%;
+  /* margin: auto; */
+  width: 40%;
   padding: 8px;
   background-color: #c9e6ff;
   display: flex;
