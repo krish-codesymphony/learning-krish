@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Box Sizing</title>
+        <style>
+            *{
+                /* box-sizing: content-box; */
+            }
+            div{
+                padding: 10px;
+            }
+            .root{
+                background-color: #b6ffcf;
+            }
+            .parent{
+                background-color: #5dc5b9;
+            }
+            .child{
+                background-color: #7878ff;
+                box-sizing: content-box; /* Change to border-box */
+                width: 100%;
+                margin: 4px;
+                padding: 30px;
+                border: 8px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="root">
+            <div class="parent">
+                <div class="child one">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Culpa a ut aspernatur sed quas dolores
+                    ducimus eveniet rerum, debitis maiores itaque fugit adipisci
+                    ipsum est aperiam aut autem praesentium pariatur!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas quo consequatur consectetur qui reprehenderit quidem,
+                    eveniet repudiandae doloremque nulla voluptatum assumenda
+                    amet expedita atque eos aliquid minus dolorem nisi dicta!
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Qui temporibus quae, dignissimos placeat quo nulla! Vitae
+                    vel quae inventore exercitationem. Modi quas obcaecati ad ut
+                    fugit aperiam sunt laboriosam earum.
+                </div>
+                <div class="child two"></div>
+            </div>
+        </div>
+    </body>
+</html>

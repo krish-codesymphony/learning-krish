@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Registration</title>
+        <link rel="stylesheet" href="registerFlex.css">
+    </head>
+    <body>
+        <form action="#" class="frmMain">
+            <div class="heading"><h2>Register</h2></div>
+            <div class="fullname">
+                <input type="text" placeholder="First Name" class="name">
+                <input type="text" placeholder="Middle Name" class="name">
+                <input type="text" placeholder="Last Name" class="name">
+            </div>
+
+            <div>
+                <input type="email" placeholder="Enter E-Mail">
+            </div>
+
+            <div>
+                <input type="password" placeholder="Enter Password">
+            </div>
+            <div class="opts">
+                <label for="chk">Role:</label>
+                <span>
+                    <input type="checkbox" name="chk" id="chkUser">
+                    <label for="chkUser">User</label>
+                </span>
+                <span>
+                    <input type="checkbox" name="chk" id="chkAdmin">
+                    <label for="chkAdmin">Admin</label>
+                </span>
+            </div>
+            <div class="opts">
+                <label for="rdb">Gender:</label>
+                <span>
+                    <input type="radio" name="rdb" id="rdbMale">
+                    <label for="rdbMale">Male</label>
+                </span>
+                <span>
+                    <input type="radio" name="rdb" id="rdbFemale">
+                    <label for="rdbFemale">Female</label>
+                </span>
+            </div>
+
+            <div class="selectItem">
+                <!-- <label for="opts">Select Item:</label> -->
+                <select class="box" name="selectItem" id="selectItem">
+                    <option value="0" selected>Select Item</option>
+                    <option value="1">Item 1</option>
+                    <option value="2">Items 2</option>
+                    <option value="3">Items 3</option>
+                </select>
+            </div>
+            <div class="btns">
+                <input type="reset" class="btn" id="reset" value="RESET">
+                <div id="#space"></div>
+                <input type="button" class="btn" id="submit" value="SUBMIT">
+            </div>
+        </form>
+    </body>
+</html>

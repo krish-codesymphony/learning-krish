@@ -1,0 +1,59 @@
+* {
+  font-size: 24px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 8px;
+  border-bottom: 2px solid dodgerblue;
+  padding: 4px;
+  background-color: white;
+  display: flex;
+}
+header > p {
+  margin: 0;
+  /* font-size: 32px; */
+  font-weight: 600;
+}
+.title {
+  font-size: 32px;
+}
+
+.content {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 8px;
+  gap: 48px;
+}
+
+.htmlDemos {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 32px 20px;
+}
+.sectionHead {
+  width: 100%;
+  text-align: center;
+}
+.sectionHead > span {
+  font-size: 30px;
+  font-weight: 700;
+}
+.card {
+  background-color: dodgerblue;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+}
+.card > a {
+  border-radius: 8px;
+  padding: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+.card a:hover {
+  background-color: lightskyblue;
+  color: black;
+}
