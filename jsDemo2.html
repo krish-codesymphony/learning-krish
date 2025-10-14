@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>JS Demo 2</title>
+  </head>
+  <body>
+    <button id="b1">First</button>
+    <button id="b2">Second</button>
+    <button id="b3">Third</button>
+    <p id="text"></p>
+
+    <script>
+      let b1 = document.getElementById("b1");
+      let b2 = document.getElementById("b2");
+      let b3 = document.getElementById("b3");
+      let text = document.getElementById("text");
+      text.style.fontSize = "28px";
+
+      b1.onclick = function () {
+        handleClick(text, "This is first Text.", "red");
+      };
+
+      b2.onclick = function () {
+        handleClick(text, "This is second Text.", "lightGreen");
+      };
+
+      b3.onclick = function () {
+        handleClick(text, "This is third Text.", "lightBlue");
+      };
+
+      function handleClick(textElem, textData, backColor) {
+        // console.log(b1);
+        // console.log(text);
+        // console.log(textData);
+        textElem.style.backgroundColor = backColor;
+        textElem.innerText = textData;
+      }
+    </script>
+  </body>
+</html>

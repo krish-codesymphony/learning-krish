@@ -108,7 +108,6 @@
 
     <script>
       let btnSubmit = document.getElementById("submit");
-      let dataTable = document.getElementById("dataTable");
       let firstName = document.getElementById("firstName");
       let middleName = document.getElementById("middleName");
       let lastName = document.getElementById("lastName");
@@ -120,9 +119,11 @@
       let rdbFemale = document.getElementById("rdbFemale");
       let gender = document.getElementsByName("rdb");
       let dropDown = document.getElementById("selectItem");
+      let dataTable = document.getElementById("dataTable");
       let btnClear = document.getElementById("reset");
+
       btnSubmit.addEventListener("click", handleSubmit);
-      
+
       function handleSubmit() {
         let role;
         if (chkUser.checked == true) role = chkUser.value;
@@ -132,28 +133,40 @@
 
         let selectedItem = dropDown.options[dropDown.selectedIndex].textContent;
 
-        let textValues = [
-          firstName.value,
-          middleName.value,
-          lastName.value,
-          email.value,
-          password.value,
-          role,
-          gender,
-          selectedItem,
-        ];
+        // let textValues = [
+        //   firstName.value,
+        //   middleName.value,
+        //   lastName.value,
+        //   email.value,
+        //   password.value,
+        //   role,
+        //   gender,
+        //   selectedItem,
+        // ];
+        // let trow = document.createElement("tr");
+        // for (let i = 0; i < textValues.length; i++) {
+        //   let tdata = document.createElement("td"); // new  td for every element
+        //   let text = document.createTextNode(textValues[i]);
+        //   tdata.appendChild(text);
+        //   trow.appendChild(tdata);
+        // }
 
-        let trow = document.createElement("tr");
-        for (let i = 0; i < textValues.length; i++) {
-          let tdata = document.createElement("td"); // new  td for every element
-          let text = document.createTextNode(textValues[i]);
-          tdata.appendChild(text);
-          trow.appendChild(tdata);
-        }
+        let trow = `<tr>
+            <td>${firstName.value}</td>
+            <td>${middleName.value}</td>
+            <td>${lastName.value}</td>
+            <td>${email.value}</td>
+            <td>${password.value}</td>
+            <td>${role}</td>
+            <td>${gender}</td>
+            <td>${selectedItem}</td>
+            </tr>`.trim();
         console.log(trow);
-        dataTable.appendChild(trow);
+        dataTable.innerHTML += trow;
 
+        // dataTable.appendChild(trow);
         btnClear.click();
+        firstName.focus();
       }
     </script>
   </body>
