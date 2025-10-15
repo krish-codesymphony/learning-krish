@@ -62,5 +62,5 @@ const arr = ["this", "is", "an", "array", "is", true, 5];
 // console.log(arr.indexOf("is"));
 // console.log(arr.lastIndexOf("is"));
 // console.log(arr.includes(5));
-
-// console.log(arr.find((x) => x == "is"));
+const nums = [1, 2, 3, 4, 1, 5, 6, 2, 4, 1];
+console.log(arr.find((x) => x == 1));
