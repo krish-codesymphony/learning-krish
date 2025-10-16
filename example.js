@@ -62,5 +62,39 @@ const arr = ["this", "is", "an", "array", "is", true, 5];
 // console.log(arr.indexOf("is"));
 // console.log(arr.lastIndexOf("is"));
 // console.log(arr.includes(5));
-const nums = [1, 2, 3, 4, 1, 5, 6, 2, 4, 1];
-console.log(arr.find((x) => x == 1));
+// const nums = [1, 2, 3, 4, 1, 5, 6, 2, 4, 1];
+// console.log(arr.find((x) => x == 1));
+
+// ----------- CLOSURE -----------
+// function outer() {
+//   let o = "Inside Out";
+//   return function () {
+//     console.log(o);
+//   };
+// }
+
+// let inner = outer();
+// inner();
+
+const person = {
+  firstname: "John",
+  lastname: "Doe",
+  age: 50,
+  eyeColor: "blue",
+  fullname: function () {
+    return `${this.firstname} ${this.lastname}`;
+  },
+};
+
+person.age = 40;
+// console.log(person);
+let { age, eyeColor } = person;
+
+// console.log(age);
+// console.log(eyeColor);
+
+// console.log(person.fullname());
+
+// console.log(Object.getOwnPropertyNames(person));
+
+console.log(Object.get(person));
