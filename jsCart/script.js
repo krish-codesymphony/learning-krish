@@ -9,25 +9,28 @@ let item1 = {
   srno: 1,
   itemName: "Item 1",
   itemImage: "item1.png",
-  quantity: 1,
+  stock: 15,
+  quantity: 0,
   rate: 10,
-  total: 10,
+  total: 0,
 };
 let item2 = {
   srno: 2,
   itemName: "Item 2",
   itemImage: "item2.png",
-  quantity: 1,
+  stock: 10,
+  quantity: 0,
   rate: 20,
-  total: 20,
+  total: 0,
 };
 let item3 = {
   srno: 3,
   itemName: "Item 3",
   itemImage: "item3.png",
-  quantity: 1,
+  stock: 5,
+  quantity: 0,
   rate: 30,
-  total: 30,
+  total: 0,
 };
 
 let arrItems = [item1, item2, item3];
@@ -51,6 +54,9 @@ function render() {
     <button id="removeItem" class="removeBtn btn" onClick="decrement(${index}
     )">-</button>
     </td>
+    <td style="background-color:${item.stock == 0 ? "red" : ""};">${
+      item.stock
+    }</td>
     <td>${item.rate}</td>
     <td>${item.rate * item.quantity}</td>
     </tr>`;
@@ -63,30 +69,19 @@ function render() {
 render();
 
 function increment(index) {
-  ++arrItems[index].quantity;
+  if (arrItems[index].stock > 0) {
+    console.log(arrItems[index].stock);
+
+    arrItems[index].stock--;
+    arrItems[index].quantity++;
+  }
   render();
 }
 
 function decrement(index) {
   if (arrItems[index].quantity > 0) {
-    --arrItems[index].quantity;
-    render();
+    arrItems[index].quantity--;
+    arrItems[index].stock++;
   }
+  render();
 }
-
-// let addItem = tableBody.querySelectorAll(".addBtn");
-// let removeItem = tableBody.querySelectorAll(".removeBtn");
-
-// addItem.forEach((addBtn) => {
-//   addBtn.addEventListener("click", (event) => {
-//     let qty = event.target.nextElementSibling;
-//     qty.textContent = Number(qty.textContent) + 1;
-//   });
-// });
-
-// removeItem.forEach((rmBtn) => {
-//   rmBtn.addEventListener("click", (event) => {
-//     let qty = event.target.previousElementSibling;
-//     qty.textContent = Number(qty.textContent) - 1;
-//   });
-// });
