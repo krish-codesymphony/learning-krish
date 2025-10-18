@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>Cart Demo</title>
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <div class="main">
+      <header>
+        <nav>
+          <div class="title">
+            <img src="shopping-bag.png" alt="Logo" height="44px" />
+            <span>Whimsy & Wonder</span>
+          </div>
+          <ul class="menu">
+            <li class="menuItem"><a href="#showProducts">PRODUCTS</a></li>
+            <li class="menuItem">SERVICES</li>
+            <li class="menuItem">ABOUT</li>
+            <li class="menuItem">CUSTOMER CARE</li>
+            <li class="menuItem">ACCOUNT</li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content">
+        <div class="sectionHead">
+          <p class="descText">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
+            quo! Eos possimus laudantium sit delectus nobis dolores quos maxime
+            aspernatur, vitae facere ipsum perspiciatis quasi, ad itaque
+            reprehenderit facilis cumque. Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Facere modi et ex voluptatibus illo
+            iure! Recusandae, veniam amet vitae aliquid optio incidunt doloribus
+            quas ea dolores praesentium aliquam fugiat ipsum! Lorem ipsum dolor,
+            sit amet consectetur adipisicing elit. Omnis ad, voluptatem
+            recusandae illo, temporibus quia cupiditate eum consectetur culpa
+            illum quibusdam voluptatibus excepturi modi quidem earum laborum
+            blanditiis necessitatibus quaerat?
+          </p>
+        </div>
+
+        <div class="banner">
+          <img
+            src="project1.jpg"
+            alt="bannerImage"
+            width="100%"
+            height="80%"
+            class="bannerImage"
+          />
+        </div>
+
+        <div class="aboutMe" id="showProducts">
+          <div class="descMe">
+            <button id="showTable" class="btn">Show Available Items</button>
+          </div>
+          <div class="sideText">
+            <aside>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+              reprehenderit saepe impedit consequuntur fuga tenetur illo
+              voluptas similique, laboriosam, quisquam ad iusto architecto nemo.
+              Repellat modi aut enim architecto libero. Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. Praesentium possimus dicta
+              cupiditate aspernatur numquam. Quos rem soluta praesentium! Dolore
+              recusandae id neque nesciunt praesentium, laudantium veritatis
+              ipsum accusantium rem magnam.
+            </aside>
+          </div>
+        </div>
+        <div class="tableView">
+          <table id="itemTable" hidden>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Quantity</th>
+              <th>Rate</th>
+              <th>Total</th>
+            </tr>
+            <tbody id="items"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

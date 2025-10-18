@@ -33,7 +33,6 @@
       let item = document.getElementById("item");
       let tblList = document.getElementById("tblList");
       let del = document.getElementById("del");
-
       // --------------------------------------------------------------
       const arr = [];
 
@@ -47,32 +46,32 @@
       };
 
       popBtn.onclick = () => {
-        detach(arr);
+        arr.pop();
+        populate(arr);
       };
 
       del.onclick = () => {
-        console.log(document.getElementById(`item${item.value}`));
-
-        // tblList.removeChild(document.getElementById(`item${item.value}`));
-        // arr.splice(item.value, 1);
+        console.log(
+          "Deleted at index: ",
+          document.getElementById(`item${item.value - 1}`)
+        );
+        
+        tblList.removeChild(document.getElementById(`item${item.value - 1}`));
+        arr.splice(item.value - 1, 1);
+        populate(arr);
       };
 
       function populate(arr) {
         let trow = "";
-        // let deleteAct;
-        for (let i = 0; i < arr.length; i++) {
-          const element = arr[i];
-          trow += `<tr><td>${i + 1}</td><td>${element}</td></tr>`;
-        }
-        tblList.innerHTML = trow;
-        console.log(trow);
-      }
 
-      function detach(arr) {
-        console.log(arr.length - 1);
-        // tblList.removeChild(document.getElementById(`item${arr.length - 1}`));
-        arr.pop();
-        populate(arr);
+        arr.forEach((element, index) => {
+          trow += `<tr id="item${index}">
+            <td>${index + 1}</td>
+            <td>${element}</td>
+            </tr>`;
+        });
+        tblList.innerHTML = trow;
+        // console.log(trow);
       }
     </script>
   </body>
