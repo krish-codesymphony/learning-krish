@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Storage</title>
+  </head>
+  <body>
+    <p id="details"></p>
+
+    <script>
+      // localStorage.setItem(
+      //   "details",
+      //   JSON.stringify({
+      //     id: 101,
+      //     name: "John",
+      //     gender: "male",
+      //   })
+      // );
+      // let detailsObj = localStorage.getItem("details");
+
+      // let details = JSON.parse(detailsObj);
+
+      // document.getElementById("details").innerText = JSON.stringify(details);
+
+      sessionStorage.setItem("name", "John");
+      document.getElementById("details").innerText = JSON.stringify(
+        sessionStorage.getItem("name")
+      );
+    </script>
+  </body>
+</html>

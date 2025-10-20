@@ -33,6 +33,7 @@ let item3 = {
   total: 0,
 };
 
+// localStorage.setItem("arrItems", JSON.stringify([item1, item2, item3]));
 let arrItems = [item1, item2, item3];
 
 function render() {
@@ -58,15 +59,14 @@ function render() {
       item.stock
     }</td>
     <td>${item.rate}</td>
-    <td>${item.rate * item.quantity}</td>
+    <td>${item.total}</td>
     </tr>`;
   });
 
   tableBody.innerHTML = trow;
   // console.log(tableBody);
+  localStorage.setItem("arrItems", JSON.stringify(arrItems));
 }
-
-render();
 
 function increment(index) {
   if (arrItems[index].stock > 0) {
@@ -74,6 +74,7 @@ function increment(index) {
 
     arrItems[index].stock--;
     arrItems[index].quantity++;
+    arrItems[index].total = arrItems[index].rate * arrItems[index].quantity;
   }
   render();
 }
@@ -82,6 +83,12 @@ function decrement(index) {
   if (arrItems[index].quantity > 0) {
     arrItems[index].quantity--;
     arrItems[index].stock++;
+    arrItems[index].total = arrItems[index].rate * arrItems[index].quantity;
   }
   render();
 }
+
+let re = localStorage.getItem("arrItems");
+arrItems = JSON.parse(re);
+
+render();

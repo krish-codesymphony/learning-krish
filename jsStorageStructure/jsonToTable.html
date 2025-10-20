@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Json to Table</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-radius: 8px;
+        font-size: 24px;
+        text-align: center;
+      }
+      th,
+      td {
+        width: 0%;
+        padding: 4px;
+      }
+      #tableArea {
+        width: 75%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tableArea">
+      <table>
+        <tbody id="tableHeader"></tbody>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script type="module">
+      import {
+        quotes,
+        setHeaders,
+        createTable,
+        toggle,
+        movieQuotes,
+        tvQuotes,
+      } from "./script.js";
+
+      let tableHeader = document.getElementById("tableHeader");
+      tableHeader.innerHTML = setHeaders();
+
+      let tableBody = document.getElementById("tableBody");
+
+      createTable(quotes, tableBody);
+
+      let toggleBtn = document.getElementsByName("rdb");
+      toggleBtn.forEach((btn) => {
+        btn.addEventListener("change", function () {
+          // console.log(btn.value);
+          if (btn.id == "rdbMovie") toggle(movieQuotes, tableBody);
+          if (btn.id == "rdbTV") toggle(tvQuotes, tableBody);
+        });
+      });
+    </script>
+  </body>
+</html>
