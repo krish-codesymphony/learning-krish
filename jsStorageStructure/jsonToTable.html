@@ -34,7 +34,7 @@
         quotes,
         setHeaders,
         createTable,
-        toggle,
+        toggleByType,
         movieQuotes,
         tvQuotes,
       } from "./script.js";
@@ -46,14 +46,16 @@
 
       createTable(quotes, tableBody);
 
-      let toggleBtn = document.getElementsByName("rdb");
-      toggleBtn.forEach((btn) => {
+      let toggleTypeBtn = document.getElementsByName("rdb");
+      toggleTypeBtn.forEach((btn) => {
         btn.addEventListener("change", function () {
           // console.log(btn.value);
-          if (btn.id == "rdbMovie") toggle(movieQuotes, tableBody);
-          if (btn.id == "rdbTV") toggle(tvQuotes, tableBody);
+          if (btn.id == "rdbMovie") toggleByType(movieQuotes, tableBody);
+          if (btn.id == "rdbTV") toggleByType(tvQuotes, tableBody);
         });
       });
+
+      
     </script>
   </body>
 </html>

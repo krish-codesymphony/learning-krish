@@ -51,7 +51,11 @@ export function createTable(quotes, tableBody) {
   tableBody.innerHTML = table;
 }
 
-export function toggle(quoteT, tableBody) {
+export function toggleByType(quoteT, tableBody) {
   // console.log("quoteT);
   createTable(quoteT, tableBody);
 }
+
+// export function (params) {
+  
+// }
