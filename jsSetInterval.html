@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <title>Set Interval</title>
+    <style>
+      button {
+        font-size: x-large;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 8px;
+        /* border: none; */
+        border-radius: 8px;
+      }
+      button:hover {
+        background-color: #454545;
+      }
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-radius: 8px;
+        text-align: center;
+      }
+      th,
+      td {
+        width: 100px;
+        padding: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="count">00 : 00 : 00</h1>
+    <button id="start">Start</button>
+    <button id="lap">Lap</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+    <hr />
+    <br />
+    <table id="tblLaps">
+      <tr>
+        <th>Sr. No.</th>
+        <th>Laps</th>
+      </tr>
+      <tbody id="lapsLog"></tbody>
+    </table>
+    <hr />
+    <script>
+      let count = document.getElementById("count");
+      let startBtn = document.getElementById("start");
+      let lapBtn = document.getElementById("lap");
+      let stopBtn = document.getElementById("stop");
+      let resetBtn = document.getElementById("reset");
+      let lapsLog = document.getElementById("lapsLog");
+      let ms = 0;
+      let s = "0".concat(0);
+      let m = "0".concat(0);
+      let intervalID = "";
+      let stored = [];
+
+      function recordLaps(data) {
+        localStorage.setItem("laps", JSON.stringify(data));
+        const laps = JSON.parse(localStorage.getItem("laps"));
+        let tRow = "";
+        laps.forEach((element, index) => {
+          tRow = `<tr>`;
+          tRow += `<td>${index + 1}</td>`;
+          tRow += `<td>${element.minute} : ${element.second} : ${
+            element.millisecond < 10
+              ? "0".concat(element.millisecond)
+              : element.millisecond
+          }</td>`;
+          tRow += `<tr>`;
+        });
+        lapsLog.innerHTML += tRow;
+        // console.log(tRow);
+      }
+      recordLaps(stored);
+
+      function lap() {
+        stored = JSON.parse(localStorage.getItem("laps"));
+        stored.push({
+          minute: m,
+          second: s,
+          millisecond: ms,
+        });
+        recordLaps(stored);
+        // console.log(stored);
+      }
+
+      function startInc() {
+        if (intervalID == "") intervalID = setInterval(inc, 10);
+        lapBtn.disabled = false;
+      }
+
+      function stopInc() {
+        if (intervalID != "") clearInterval(intervalID);
+        intervalID = "";
+        lapBtn.disabled = true;
+      }
+
+      function inc() {
+        if (ms == 100) {
+          ms = 0;
+          if (Number(s) == 10) {
+            s++;
+          } else if (Number(s) < 10) {
+            if (Number(s) + 1 == 10) s++;
+            else s = "0".concat(Number(s) + 1);
+          } else {
+            s++;
+          }
+        }
+
+        if (s == 60) {
+          s = 0;
+          if (Number(m) == 10) {
+            m++;
+          } else if (Number(m) < 10) {
+            if (Number(m) + 1 == 10) m++;
+            else m = "0".concat(Number(m) + 1);
+          } else {
+            m++;
+          }
+        }
+
+        count.innerHTML = `
+        ${m}
+         :
+        ${s}
+         :
+        ${ms < 10 ? "0".concat(ms++) : ms++}`;
+      }
+
+      startBtn.addEventListener("click", () => startInc());
+      lapBtn.addEventListener("click", () => lap());
+      stopBtn.addEventListener("click", () => stopInc());
+      resetBtn.addEventListener("click", () => {
+        const laps = [];
+        recordLaps(laps);
+        lapsLog.innerHTML = "";
+        m = "0".concat(0);
+        s = "0".concat(0);
+        ms = 0;
+      });
+
+      if (ms == 0) lapBtn.disabled = true;
+    </script>
+  </body>
+</html>
