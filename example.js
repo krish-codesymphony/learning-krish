@@ -77,13 +77,13 @@ const arr = ["this", "is", "an", "array", "is", true, 5];
 // inner();
 
 const person = {
-  firstname: "John",
-  lastname: "Doe",
+  fullname: {
+    firstname: "John",
+    lastname: "",
+  },
   age: 50,
   eyeColor: "blue",
-  fullname: function () {
-    return `${this.firstname} ${this.lastname}`;
-  },
+
 };
 
 person.age = 40;
@@ -97,4 +97,14 @@ let { age, eyeColor } = person;
 
 // console.log(Object.getOwnPropertyNames(person));
 
-console.log(Object.get(person));
+// console.log(person.fullname);
+
+function display(name) {
+  console.log("Hello", name);
+}
+
+function greet(name, display) {
+  display(name);
+}
+
+greet("John", display);
