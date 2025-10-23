@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Fetch Demo</title>
+  </head>
+  <body>
+    <script>
+      const req = new Request("https://jsonplaceholder.typicode.com/users");
+      fetch(req).then((resp) => {
+        console.log(resp.json());
+        
+      });
+    </script>
+  </body>
+</html>

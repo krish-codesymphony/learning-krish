@@ -105,6 +105,48 @@ function display(name) {
 
 function greet(name, display) {
   display(name);
+  return true
 }
 
-greet("John", display);
+// greet("John", display);
+
+let x = 50
+// try {
+//   if (x == "") throw "is Empty";
+//   if (isNaN(x)) throw "not a number";
+//   if (x > 10) throw "too high";
+//   if (x < 5) throw "too low";
+// }
+// catch (err) {
+//   console.log(err);
+// }
+
+// const p = new Promise((res, rej) => {
+//   if (x > 18) {
+//     res("You can drive");
+//   }
+//   else {
+//     rej("go to school");
+//   }
+// })
+
+// p
+//   .then((data) => console.log(data))
+//   .catch((error) => console.log(error))
+
+function some(text) {
+  return new Promise((resolve) => {
+    setTimeout(function () {
+      resolve(`and ${text}`);
+    }, 3000);
+  });
+}
+
+async function display() {
+  console.log("wait...");
+  const p = await some("Hello!");
+  console.log(p);
+  
+}
+
+console.log(display())
