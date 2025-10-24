@@ -3,12 +3,59 @@
     <title>Fetch Demo</title>
   </head>
   <body>
+    <pre id="p"></pre>
+
     <script>
-      const req = new Request("https://jsonplaceholder.typicode.com/users");
-      fetch(req).then((resp) => {
-        console.log(resp.json());
-        
-      });
+      const url = "https://jsonplaceholder.typicode.com/posts";
+      const method = "POST";
+      const headers = {
+        "content-type": "application/json",
+      };
+      const body = {
+        title: "Tape 6A",
+        body: "-_-",
+        userId: 11,
+      };
+
+      async function fetching(url, method, body, headers) {
+        let result = "";
+        if (body == null || body == "") {
+          result = await fetch(url, {
+            method: method,
+            headers: headers,
+          });
+        } else {
+          result = await fetch(url, {
+            method: method,
+            body: JSON.stringify(body),
+            headers: headers,
+          });
+        }
+
+        if (result.ok) return result;
+        else return new Error("Error Fetching Data....!");
+      }
+
+      // -------------------------------------------------
+      let fetched = fetching(url, method, body, headers);
+      fetched
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          document.getElementById("p").textContent = JSON.stringify(data);
+        })
+        .catch((error) => {
+          console.log("Error Encountered:", error);
+        });
+
+      // -------------------------------------------------
+      let get = fetching(url, "GET", null, headers);
+      get
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => console.log(data));
     </script>
   </body>
 </html>
