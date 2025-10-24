@@ -12,7 +12,7 @@
         "content-type": "application/json",
       };
       const body = {
-        title: "Tape 6A",
+        title: "A Fetch made POST",
         body: "-_-",
         userId: 11,
       };
@@ -32,18 +32,15 @@
           });
         }
 
-        if (result.ok) return result;
+        if (result.ok) return await result.json();
         else return new Error("Error Fetching Data....!");
       }
 
       // -------------------------------------------------
       let fetched = fetching(url, method, body, headers);
       fetched
-        .then((response) => {
-          return response.json();
-        })
         .then((data) => {
-          document.getElementById("p").textContent = JSON.stringify(data);
+          console.log("Posted:", data);
         })
         .catch((error) => {
           console.log("Error Encountered:", error);
@@ -51,11 +48,14 @@
 
       // -------------------------------------------------
       let get = fetching(url, "GET", null, headers);
-      get
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => console.log(data));
+      get.then((data) => {
+        document.getElementById("p").textContent = JSON.stringify(
+          data,
+          null,
+          3
+        );
+        console.log(data);
+      });
     </script>
   </body>
 </html>
