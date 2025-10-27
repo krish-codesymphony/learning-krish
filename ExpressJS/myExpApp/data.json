@@ -1,0 +1,15 @@
+[
+  {
+    "userId": "user12345",
+    "username": "johndoe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "zipCode": "12345"
+    },
+    "roles": ["developer", "user"],
+    "isActive": true
+  }
+]
