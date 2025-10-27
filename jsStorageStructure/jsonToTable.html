@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Json to Table</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-radius: 8px;
+        font-size: 24px;
+        text-align: center;
+      }
+      th,
+      td {
+        width: 0%;
+        padding: 4px;
+      }
+      #tableArea {
+        width: 75%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="searchByText"
+      id="searchByText"
+      placeholder="Enter Term to search"
+    />
+    <br />
+    <select id="byYears">
+      <option value="0" selected>Select By Year</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;
+    <span>
+      <input type="radio" name="rdb" id="rdbMovie" value="Movie" />
+      <label for="rdbMovie">Movie</label>
+    </span>
+    &nbsp;
+    <span>
+      <input type="radio" name="rdb" id="rdbTV" value="TV" />
+      <label for="rdbTV">TV</label>
+    </span>
+    <br />
+    <br />
+    <button id="clear">CLEAR</button>
+    <hr />
+    <div id="tableArea">
+      <table>
+        <tbody id="tableHeader"></tbody>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script type="module">
+      import {
+        quotes,
+        setHeaders,
+        createTable,
+        // toggleByType,
+        movieQuotes,
+        tvQuotes,
+        years,
+        getQuotesByYear,
+        getQuotesByQText,
+      } from "./script.js";
+
+      let tableHeader = document.getElementById("tableHeader");
+      let tableBody = document.getElementById("tableBody");
+      let clearBtn = document.getElementById("clear");
+      let toggleTypeBtn = document.getElementsByName("rdb");
+      let byYears = document.getElementById("byYears");
+      let searchByText = document.getElementById("searchByText");
+      let currentQuote = [];
+      let quotesByYear = [];
+      let inTerms = [];
+
+      tableHeader.innerHTML = setHeaders();
+      currentQuote = createTable(quotes, tableBody);
+      quotesByYear = currentQuote;
+
+      clearBtn.onclick = () => {
+        toggleTypeBtn.forEach((btn) => {
+          btn.checked = false;
+          currentQuote = createTable(quotes, tableBody);
+        });
+
+        byYears.value = 0;
+      };
+
+      toggleTypeBtn.forEach((btn) => {
+        btn.addEventListener("change", function () {
+          // console.log(btn.value);
+          if (btn.id == "rdbMovie") {
+            currentQuote = createTable(movieQuotes, tableBody);
+            byYears.innerHTML = years(movieQuotes);
+          }
+          if (btn.id == "rdbTV") {
+            currentQuote = createTable(tvQuotes, tableBody);
+            byYears.innerHTML = years(tvQuotes);
+          }
+        });
+      });
+
+      byYears.onchange = () => {
+        quotesByYear = getQuotesByYear(byYears.value, currentQuote);
+        quotesByYear = createTable(quotesByYear, tableBody);
+      };
+
+      searchByText.oninput = () => {
+        inTerms = getQuotesByQText(
+          searchByText.value.toLowerCase(),
+          quotesByYear
+        );
+        inTerms = createTable(inTerms, tableBody);
+        // console.log(searchByQText.value);
+      };
+
+      byYears.innerHTML = years(currentQuote);
+    </script>
+  </body>
+</html>

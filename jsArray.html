@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>About Array</title>
+    <style>
+      * {
+        font-size: 22px;
+      }
+      input[type="button"] {
+        padding: 4px 10px 4px 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="item" placeholder="Enter a Value" />
+    <br />
+    <br />
+    <input type="button" id="push" value="Push Element" />
+    <input type="button" id="pop" value="Pop Element" />
+    <input type="button" id="forEach" value="Multiply with Exponent" />
+    <input type="button" id="addAll" value="Add All Elements" />
+    <br />
+    <br />
+    <input type="text" id="arr" readonly />
+    <script>
+      let pushBtn = document.getElementById("push");
+      let popBtn = document.getElementById("pop");
+      let squareBtn = document.getElementById("forEach");
+      let addAll = document.getElementById("addAll");
+      let item = document.getElementById("item");
+      let arrHTML = document.getElementById("arr");
+
+      // --------------------------------------------------------------
+      const arr = [];
+
+      pushBtn.onclick = () => {
+        arr.push(item.value);
+        // console.log(arr);
+        arrHTML.value = arr;
+      };
+
+      popBtn.onclick = () => {
+        arr.pop();
+        arrHTML.value = arr;
+      };
+
+      squareBtn.onclick = () => {
+        const mapped = arr.map(
+          (element) => Number(element) ** Number(item.value)
+        );
+        arrHTML.value = mapped;
+        // console.log(mapped);
+      };
+
+      addAll.onclick = () => {
+        const reduced = arr.reduce((acc, curr) => Number(acc) + Number(curr));
+        arrHTML.value = reduced;
+      };
+    </script>
+  </body>
+</html>

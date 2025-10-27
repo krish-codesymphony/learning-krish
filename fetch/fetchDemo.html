@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>Fetch Demo</title>
+  </head>
+  <body>
+    <pre id="p"></pre>
+    <img id="image" />
+    <script>
+      const url = "https://jsonplaceholder.typicode.com/posts";
+      const method = "POST";
+      const headers = {
+        "content-type": "application/json",
+      };
+      const body = {
+        title: "A Fetch made POST",
+        body: "-_-",
+        userId: 11,
+      };
+
+      async function fetching(url, method, body, headers) {
+        let result = "";
+        if (body == null || body == "") {
+          result = await fetch(url, {
+            method: method,
+            headers: headers,
+          });
+        } else {
+          result = await fetch(url, {
+            method: method,
+            body: JSON.stringify(body),
+            headers: headers,
+          });
+        }
+        const res = await result.json();
+
+        if (result.ok) return res;
+        else return new Error("Error Fetching Data....!");
+      }
+
+      let get = fetching(`${url}/1`, "GET", null, headers);
+      get.then((data) => {
+        document.getElementById("p").textContent = JSON.stringify(
+          data,
+          null,
+          3
+        );
+        // console.log("GET:", data);
+      });
+
+      // -------------------------------------------------
+      let post = fetching(url, method, body, headers);
+      // post
+      //   .then((data) => {
+      //     console.log("POST:", data);
+      //   })
+      //   .catch((error) => {
+      //     console.log("Error Encountered:", error);
+      //   });
+
+      // -------------------------------------------------
+
+      let put = fetching(
+        `${url}/1`,
+        "PUT",
+        {
+          title: "A Fetch made PUT",
+          body: ":)",
+          userId: 11,
+        },
+        headers
+      );
+      // put.then((data) => console.log("PUT:", data));
+
+      // -------------------------------------------------
+
+      let patch = fetching(
+        `${url}/1`,
+        "PATCH",
+        { title: "A Fetch made PATCH" },
+        headers
+      );
+      // patch.then((data) => console.log("PATCH:", data));
+
+      // -------------------------------------------------
+
+      let del = fetching(`${url}/1`, "DELETE", headers);
+      // del.then((data) => console.log("DELETE:", data));
+
+      // -------------------------------------------------
+
+      async function getImage() {
+        try {
+          const response = await fetch("https://picsum.photos/700/400", {
+            method: "GET",
+            headers: {
+              "content-type": "image/jpeg",
+            },
+          });
+          // const result = await response.url;
+          // console.log(result);
+          return response;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      // getImage();
+      // ------------------ Calling all ------------------
+      let allCalls = Promise.all([get, post, put, patch, del]).then((data) =>
+        console.log(data)
+      );
+      
+      const res = getImage();
+      res.then((data) => {
+        document.getElementById("image").src = data.url;
+      });
+    </script>
+  </body>
+</html>

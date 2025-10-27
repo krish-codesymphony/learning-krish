@@ -27,7 +27,7 @@ header > p {
   gap: 48px;
 }
 
-.htmlDemos {
+.section {
   display: flex;
   flex-flow: row wrap;
   gap: 32px 20px;

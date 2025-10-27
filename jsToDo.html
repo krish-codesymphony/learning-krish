@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>To Do List</title>
+    <style>
+      * {
+        font-size: 22px;
+      }
+      input[type="button"] {
+        padding: 4px 10px 4px 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="item" placeholder="Enter a Value" />
+    <br />
+    <br />
+    <input type="button" id="push" value="Add Task" />
+    <input type="button" id="pop" value="Delete Last" />
+    <input type="button" id="del" value="Delete At" />
+    <br />
+    <br />
+    <table border="2px">
+      <tr>
+        <th>Sr. No.</th>
+        <th>Task</th>
+      </tr>
+      <tbody id="tblList"></tbody>
+    </table>
+    <script>
+      let pushBtn = document.getElementById("push");
+      let popBtn = document.getElementById("pop");
+      let item = document.getElementById("item");
+      let tblList = document.getElementById("tblList");
+      let del = document.getElementById("del");
+      // --------------------------------------------------------------
+      const arr = [];
+
+      pushBtn.onclick = () => {
+        if (item.value == null || item.value == "" || item.value == undefined) {
+          item.style.borderColor = "red";
+          return false;
+        }
+        arr.push(item.value);
+        populate(arr);
+      };
+
+      popBtn.onclick = () => {
+        arr.pop();
+        populate(arr);
+      };
+
+      del.onclick = () => {
+        console.log(
+          "Deleted at index: ",
+          document.getElementById(`item${item.value - 1}`)
+        );
+        
+        tblList.removeChild(document.getElementById(`item${item.value - 1}`));
+        arr.splice(item.value - 1, 1);
+        populate(arr);
+      };
+
+      function populate(arr) {
+        let trow = "";
+
+        arr.forEach((element, index) => {
+          trow += `<tr id="item${index}">
+            <td>${index + 1}</td>
+            <td>${element}</td>
+            </tr>`;
+        });
+        tblList.innerHTML = trow;
+        // console.log(trow);
+      }
+    </script>
+  </body>
+</html>
