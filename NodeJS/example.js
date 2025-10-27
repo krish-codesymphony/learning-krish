@@ -1,11 +1,14 @@
 var a = "A";
 
+// normal function
 function fun() {
-  let a = "B";
+  a = "B";
   console.log(a);
 }
 
 // fun();
+// console.log(a);
+
 
 {
   const a = "c";
@@ -99,18 +102,18 @@ let { age, eyeColor } = person;
 
 // console.log(person.fullname);
 
-function display(name) {
+function greet(name) {
   console.log("Hello", name);
 }
 
-function greet(name, display) {
-  display(name);
+function display(name, fun) {
+  fun(name);
   return true
 }
 
-// greet("John", display);
+display("John", greet);
 
-let x = 50
+let x;
 // try {
 //   if (x == "") throw "is Empty";
 //   if (isNaN(x)) throw "not a number";
@@ -125,28 +128,27 @@ let x = 50
 //   if (x > 18) {
 //     res("You can drive");
 //   }
-//   else {
+//   else if (x < 18) {
 //     rej("go to school");
 //   }
+//   else throw new Error("Maybe it was not a number you entered...");
 // })
 
 // p
 //   .then((data) => console.log(data))
 //   .catch((error) => console.log(error))
 
-function some(text) {
+function prom(text) {
   return new Promise((resolve) => {
     setTimeout(function () {
-      resolve(`and ${text}`);
+      resolve(`and... ${text}`);
     }, 3000);
   });
 }
 
-async function display() {
-  console.log("wait...");
-  const p = await some("Hello!");
-  console.log(p);
-  
-}
-
-console.log(display())
+// async function display() {
+//   console.log("wait...");
+//   const p = await prom("Hello!");
+//   console.log(p);
+// }
+// display()
