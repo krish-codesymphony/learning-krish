@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="userId">Find User using userId:</label>
+    <input type="number" name="userId" id="userId" min="1" max="1000" />
+    <input type="button" id="findOne" value="Find" />
+    <input type="button" id="paged" value="Paged" />
+    <br />
+    <hr />
+    <div>
+      <p id="pageNo"></p>
+      <pre id="dataDisplay"></pre>
+    </div>
+    <script>
+      let pageNo = document.getElementById("pageNo");
+      let userId = document.getElementById("userId");
+      let dataDisplay = document.getElementById("dataDisplay");
+      let paged = document.getElementById("paged");
+      let findOne = document.getElementById("findOne");
+      let url = "http://localhost:8081";
+      let method = "GET";
+      let headers = {
+        "content-type": "application/json",
+      };
+
+      paged.addEventListener("click", () => {});
+
+      findOne.addEventListener("click", () => {
+        const fetched = fetchData(
+          `${url}/users/${userId.value}`,
+          method,
+          null,
+          headers
+        );
+        fetched.then((data) => {
+          dataDisplay.textContent = JSON.stringify(data, null, 3);
+        });
+      });
+
+      async function fetchData(url, method, body, headers) {
+        let result;
+        try {
+          result = await fetch(url, {
+            method: method,
+            body: body,
+            headers: headers,
+          }); 
+          return await result.json();
+        } catch (error) {
+          // console.log(error);
+          return error;
+        }
+      }
+    </script>
+  </body>
+</html>
