@@ -6,27 +6,77 @@ const app = express();
 app.use(bodyParser.json());
 const PORT = 8081;
 
+let allData = pool.query("SELECT u.username, u.role, ed.department, ed.designation, ed.salary, ed.dateJoined, CONCAT(pd.firstName, ' ', pd.lastName) AS 'FullName', pd.gender, pd.dob, pd.email, pd.phone, pd.address, pd.city, pd.state, pd.country, u.isActive FROM theoffice.users AS u JOIN theoffice.employmentdetails AS ed JOIN theoffice.personaldetails AS pd ON ed.userId = u.userId AND pd.userId = u.userId;")
+    .then((data) => { return data })
+    .catch(err => console.log(err));
+
 app.get("/", (req, res) => {
     res.send("welcome");
 });
 
+app.get("/all", (req, res) => {
+    let users = [];
+    let employmentDetails = [];
+    let personalDetails = [];
+    Promise.all([
+        pool.execute("SELECT * FROM users"),
+        pool.execute("SELECT * FROM employmentDetails"),
+        pool.execute("SELECT * FROM personalDetails")
+    ])
+        .then((allData) => {
+            res.send([allData[0][0], allData[1][0], allData[2][0]]);
+        })
+        .catch((error) => console.log(error));
+});
+
+app.get("/all/active", (req, res) => {
+    allData.then((data) => {
+        const result = data[0].filter((user) => user.isActive == true)
+        res.send(result);
+    })
+});
+
+app.get("/all/:gender", (req, res) => {
+    allData.then((data) => {
+        const gender = req.params.gender.toLowerCase();
+        const result = data[0].filter((d) => d.gender.toLowerCase() == gender);
+        res.send(result);
+    })
+});
+
+app.get("/all/:city", (req, res) => {
+    allData.then((data) => {
+        const city = req.params.city.toLowerCase();
+        const result = data[0].filter((d) => d.city.toLowerCase() == city);
+        res.send(result);
+    })
+});
+
+app.get("/all/:state", (req, res) => {
+    allData.then((data) => {
+        const state = req.params.state.toLowerCase();
+        const result = data[0].filter((d) => d.state.toLowerCase() == state);
+        res.send(result);
+    })
+});
+
 app.get("/users", (req, res) => {
-    pool.query("SELECT * FROM users")
+    pool.execute("SELECT * FROM users")
         .then(result => res.send(result[0]))
         .catch(err => res.send(err));
 });
 
-app.get("/employementDetails", (req, res) => {
-    pool.query("SELECT * FROM employementDetails")
+app.get("/employmentDetails", (req, res) => {
+    pool.execute("SELECT * FROM employmentDetails")
         .then(result => res.send(result[0]))
         .catch(err => res.send(err));
 });
 
 app.get("/personalDetails", (req, res) => {
-    pool.query("SELECT * FROM personalDetails")
+    pool.execute("SELECT * FROM personalDetails")
         .then(result => res.send(result[0]))
         .catch(err => res.send(err));
 });
 
- 
+
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
