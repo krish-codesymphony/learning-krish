@@ -81,7 +81,6 @@ export class UserService {
         curr.isActive = updatedUser.isActive;
       }
     });
-    console.log(this.users);
     return this.users;
   }
 
