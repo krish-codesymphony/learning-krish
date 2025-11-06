@@ -13,3 +13,5 @@ test/
 logs
 *.log
 npm-debug.log*
+
+.env
