@@ -16,7 +16,7 @@ export class UserService {
   }
 
   createUser(newUser: CreateUserDTO) {
-    const user = this.userRepo.create({ ...newUser, isActive: 'true' });
+    const user = this.userRepo.create({ ...newUser, isActive: true });
     return this.userRepo.save(user);
   }
 

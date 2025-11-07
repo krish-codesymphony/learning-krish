@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Roles } from '../enum/user-roles.enum';
 
 @Entity({ name: 'users' })
 export class UserEntity {
@@ -17,9 +18,13 @@ export class UserEntity {
   @Column()
   streetAddress: string;
 
-  @Column()
-  roles: string;
+  @Column({
+    type: 'enum',
+    enum: Roles,
+    default: Roles.VISITOR,
+  })
+  roles: Roles;
 
   @Column()
-  isActive: string;
+  isActive: boolean;
 }
