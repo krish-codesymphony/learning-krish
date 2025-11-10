@@ -1,10 +1,16 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { UserEntity } from './user.entity';
 
 @Entity({ name: 'employmentDetails' })
 export class EmploymentDetailsEntity {
-  @PrimaryColumn()
-  empId: number;
+  @PrimaryGeneratedColumn('uuid')
+  empId: string;
 
   @Column({
     type: 'enum',
@@ -25,7 +31,7 @@ export class EmploymentDetailsEntity {
   @Column()
   dateJoined: Date;
 
-  @OneToOne(() => UserEntity, (user) => user.employmentDetails, { eager: true })
+  @OneToOne(() => UserEntity, (user) => user.employmentDetails)
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
 }

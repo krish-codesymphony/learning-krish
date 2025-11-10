@@ -1,7 +1,7 @@
 export class CreateEmploymentDetailsDTO {
-  empId: number;
+  // empId: number;
   department: string;
   salary: number;
   dateJoined: Date;
-  user: number;
+  user: string;
 }

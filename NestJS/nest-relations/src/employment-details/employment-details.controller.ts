@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get } from '@nestjs/common';
 import { EmploymentDetailsService } from './employment-details.service';
-import { CreateEmploymentDetailsDTO } from 'src/dto/create-employmentDetails.dto';
 
 @Controller('employment-details')
 export class EmploymentDetailsController {
@@ -9,10 +8,5 @@ export class EmploymentDetailsController {
   @Get()
   findAll() {
     return this.empDetailsService.findAll();
-  }
-
-  @Post()
-  createEmpDetails(@Body() newEmpDetails: CreateEmploymentDetailsDTO) {
-    return this.empDetailsService.createEmpDetails(newEmpDetails);
   }
 }

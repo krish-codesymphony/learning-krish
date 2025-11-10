@@ -1,5 +1,5 @@
 export class CreatePersonalDetailsDTO {
-  personalId: number;
+  // personalId: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -10,5 +10,5 @@ export class CreatePersonalDetailsDTO {
   city: string;
   state: string;
   country: string;
-  user: number;
+  user: string;
 }

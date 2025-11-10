@@ -1,31 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDTO } from 'src/dto/create-user.dto';
+import { EmploymentDetailsService } from 'src/employment-details/employment-details.service';
 import { UserEntity } from 'src/entities/user.entity';
+import { PersonalDetailsService } from 'src/personal-details/personal-details.service';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity) private userRepo: Repository<UserEntity>,
+    private perDetailsService: PersonalDetailsService,
+    private empDetailsService: EmploymentDetailsService,
   ) {}
 
   findAll() {
     return this.userRepo.find();
   }
 
-  findOne(userId: number) {
+  findOne(userId: string) {
     return this.userRepo.findOneBy({ userId: userId });
   }
 
-  createUser(userDto: CreateUserDTO) {
-    const user = new UserEntity();
-    user.userId = userDto.userId;
-    user.username = userDto.username;
-    user.password = userDto.password;
-    user.role = userDto.role;
-    user.isActive = userDto.isActive;
+  async getAll(userId: string) {
+    return await this.userRepo.findOne({
+      where: { userId: userId },
+      relations: {
+        personalDetails: true,
+        employmentDetails: true,
+      },
+    });
+  }
 
-    return this.userRepo.save(user);
+  async createUser(userDto: CreateUserDTO) {
+    const createdUser = await this.userRepo.save(userDto.user);
+
+    await this.perDetailsService.create(userDto.personalDetails, createdUser);
+
+    await this.empDetailsService.create(userDto.employmentDetails, createdUser);
+
+    return 'Saved records...';
   }
 }

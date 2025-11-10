@@ -1,11 +1,11 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { PersonalDetailsEntity } from './personal-details.entity';
 import { EmploymentDetailsEntity } from './employment-details.entity';
 
 @Entity({ name: 'users' })
 export class UserEntity {
-  @PrimaryColumn()
-  userId: number;
+  @PrimaryGeneratedColumn('uuid')
+  userId: string;
 
   @Column()
   username: string;

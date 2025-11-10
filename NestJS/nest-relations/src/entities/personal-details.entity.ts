@@ -1,10 +1,16 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { UserEntity } from './user.entity';
 
 @Entity({ name: 'personalDetails' })
 export class PersonalDetailsEntity {
-  @PrimaryColumn()
-  personalId: number;
+  @PrimaryGeneratedColumn('uuid')
+  personalId: string;
 
   @Column()
   firstName: string;
@@ -40,7 +46,7 @@ export class PersonalDetailsEntity {
   @Column()
   country: string;
 
-  @OneToOne(() => UserEntity, (user) => user.personalDetails, { eager: true })
+  @OneToOne(() => UserEntity, (user) => user.personalDetails)
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
 }

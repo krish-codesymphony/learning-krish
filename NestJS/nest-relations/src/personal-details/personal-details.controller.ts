@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get } from '@nestjs/common';
 import { PersonalDetailsService } from './personal-details.service';
-import { CreatePersonalDetailsDTO } from 'src/dto/create-personalDetails.dto';
 
 @Controller('personal-details')
 export class PersonalDetailsController {
@@ -9,10 +8,5 @@ export class PersonalDetailsController {
   @Get()
   findAll() {
     return this.perDetailsService.findAll();
-  }
-
-  @Post()
-  createPerDetails(@Body() newPerDetails: CreatePersonalDetailsDTO) {
-    return this.perDetailsService.createPersonalDetails(newPerDetails);
   }
 }
