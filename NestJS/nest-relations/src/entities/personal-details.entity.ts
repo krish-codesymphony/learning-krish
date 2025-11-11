@@ -31,7 +31,7 @@ export class PersonalDetailsEntity {
   })
   gender: string;
 
-  @Column()
+  @Column({ type: 'date' })
   dob: Date;
 
   @Column()
@@ -46,7 +46,7 @@ export class PersonalDetailsEntity {
   @Column()
   country: string;
 
-  @OneToOne(() => UserEntity, (user) => user.personalDetails)
+  @OneToOne(() => UserEntity, (user) => user.personalDetails, { cascade: true })
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreatePersonalDetailsDTO } from 'src/dto/create-personalDetails.dto';
+import { PersonalDetailsDTO } from 'src/dto/personalDetails.dto';
+import { UpdateUserDTO } from 'src/dto/update-user.dto';
 import { PersonalDetailsEntity } from 'src/entities/personal-details.entity';
 import { UserEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -16,7 +17,14 @@ export class PersonalDetailsService {
     return this.perDetailsRepo.find();
   }
 
-  create(perDetailsDto: CreatePersonalDetailsDTO, user: UserEntity) {
+  create(perDetailsDto: PersonalDetailsDTO, user: UserEntity) {
     return this.perDetailsRepo.save({ ...perDetailsDto, user: user });
+  }
+
+  async update(user: UserEntity, updateDto: UpdateUserDTO) {
+    return await this.perDetailsRepo.update(
+      { user: user },
+      { ...updateDto.personalDetails, user: user },
+    );
   }
 }

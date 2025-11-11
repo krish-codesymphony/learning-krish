@@ -1,5 +1,5 @@
-export class CreatePersonalDetailsDTO {
-  // personalId: number;
+export class PersonalDetailsDTO {
+  personalId?: string;
   firstName: string;
   lastName: string;
   email: string;

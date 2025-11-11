@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateEmploymentDetailsDTO } from 'src/dto/create-employmentDetails.dto';
+import { EmploymentDetailsDTO } from 'src/dto/employmentDetails.dto';
+import { UpdateUserDTO } from 'src/dto/update-user.dto';
 import { EmploymentDetailsEntity } from 'src/entities/employment-details.entity';
 import { UserEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -16,7 +17,14 @@ export class EmploymentDetailsService {
     return this.empDetailsRepo.find();
   }
 
-  create(empDetailsDto: CreateEmploymentDetailsDTO, user: UserEntity) {
+  create(empDetailsDto: EmploymentDetailsDTO, user: UserEntity) {
     return this.empDetailsRepo.save({ ...empDetailsDto, user: user });
+  }
+
+  async update(user: UserEntity, updateDto: UpdateUserDTO) {
+    return await this.empDetailsRepo.update(
+      { user: user },
+      { ...updateDto.employmentDetails, user: user },
+    );
   }
 }

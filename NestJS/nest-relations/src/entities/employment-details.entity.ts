@@ -28,10 +28,12 @@ export class EmploymentDetailsEntity {
   @Column()
   salary: number;
 
-  @Column()
+  @Column({ type: 'date' })
   dateJoined: Date;
 
-  @OneToOne(() => UserEntity, (user) => user.employmentDetails)
+  @OneToOne(() => UserEntity, (user) => user.employmentDetails, {
+    cascade: true,
+  })
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
 }

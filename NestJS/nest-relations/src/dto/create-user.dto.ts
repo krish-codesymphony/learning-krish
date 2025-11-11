@@ -1,15 +1,9 @@
-import { CreateEmploymentDetailsDTO } from './create-employmentDetails.dto';
-import { CreatePersonalDetailsDTO } from './create-personalDetails.dto';
+import { EmploymentDetailsDTO } from './employmentDetails.dto';
+import { PersonalDetailsDTO } from './personalDetails.dto';
+import { UserDTO } from './user.dto';
 
 export class CreateUserDTO {
-  // userId: number;
-  user: {
-    username: string;
-    password: string;
-    role: string;
-    isActive: boolean;
-  };
-
-  personalDetails: CreatePersonalDetailsDTO;
-  employmentDetails: CreateEmploymentDetailsDTO;
+  user: UserDTO;
+  personalDetails: PersonalDetailsDTO;
+  employmentDetails: EmploymentDetailsDTO;
 }

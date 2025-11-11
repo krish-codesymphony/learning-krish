@@ -1,5 +1,5 @@
-export class CreateEmploymentDetailsDTO {
-  // empId: number;
+export class EmploymentDetailsDTO {
+  empId?: string;
   department: string;
   salary: number;
   dateJoined: Date;
