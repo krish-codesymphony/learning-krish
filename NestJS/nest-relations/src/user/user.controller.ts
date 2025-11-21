@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDTO } from 'src/dto/create-user.dto';
 import { UpdateUserDTO } from 'src/dto/update-user.dto';
+import { LoginDTO } from 'src/dto/login.dto';
 
 @Controller('user')
 export class UserController {
@@ -14,6 +15,11 @@ export class UserController {
   @Get(':userId')
   getDetails(@Param('userId') userId: string) {
     return this.userService.getDetails(userId);
+  }
+
+  @Post('/login')
+  getUserLogin(@Body() userCredentials: LoginDTO) {
+    return this.userService.findUserLogin(userCredentials);
   }
 
   @Post()

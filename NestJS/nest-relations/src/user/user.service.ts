@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDTO } from 'src/dto/create-user.dto';
+import { LoginDTO } from 'src/dto/login.dto';
 import { UpdateUserDTO } from 'src/dto/update-user.dto';
 import { EmploymentDetailsService } from 'src/employment-details/employment-details.service';
 import { UserEntity } from 'src/entities/user.entity';
@@ -21,6 +22,16 @@ export class UserService {
 
   findOne(userId: string) {
     return this.userRepo.findOneBy({ userId: userId });
+  }
+
+  async findUserLogin(userCredentials: LoginDTO) {
+    const res = await this.userRepo.findOne({
+      where: {
+        username: userCredentials.username,
+        password: userCredentials.password,
+      },
+    });
+    return res;
   }
 
   async getDetails(userId: string) {
