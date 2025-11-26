@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
 
 function LoginPage() {
   const [data, setData] = useState({});
+  const navigate = useNavigate();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const name = e.target.name.substring(5).toLowerCase();
+    const name = e.target.name;
     const value = e.target.value;
     setData((values) => ({ ...values, [name]: value }));
   }
@@ -13,7 +15,7 @@ function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const submit = await fetch("http://localhost:3000/user/login", {
+    const submit = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -22,8 +24,11 @@ function LoginPage() {
     });
 
     const res = await submit.json();
-    if (submit.ok) console.log(res);
-    else console.log(submit.body);
+    if (submit.ok) {
+      localStorage.setItem("token", res.access_token);
+      localStorage.setItem("user", JSON.stringify(res.user));
+      navigate("/dashboard");
+    } else console.log(submit.body);
   }
 
   return (
@@ -33,16 +38,16 @@ function LoginPage() {
         <InputField
           inputType="text"
           label="Enter Username:"
-          id="loginUsername"
-          inputName="loginUsername"
+          id="username"
+          inputName="username"
           changeHandler={handleChange}
         />
         <br />
         <InputField
           inputType="password"
           label="Enter Password:"
-          inputName="loginPassword"
-          id="loginPassword"
+          inputName="password"
+          id="password"
           changeHandler={handleChange}
         />
         <br />
