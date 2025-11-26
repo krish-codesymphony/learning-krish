@@ -17,5 +17,6 @@ import { EmploymentDetailsService } from 'src/employment-details/employment-deta
   ],
   controllers: [UserController],
   providers: [UserService, PersonalDetailsService, EmploymentDetailsService],
+  exports: [UserService],
 })
 export class UserModule {}
