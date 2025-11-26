@@ -57,7 +57,6 @@ function RegisterPage() {
 
   return (
     <div className="registerPage">
-      <hr />
       <h1>Register User</h1>
       <form onSubmit={handleSubmit} method="post">
         <InputField
